@@ -10,7 +10,7 @@ Another Fedora guide for my friends
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 ```
 
-## Browsers
+## Software
 
 ### Brave
 
@@ -26,6 +26,35 @@ sudo dnf install brave-browser
 
 ```
 sudo dnf install torbrowser-launcher
+```
+
+### Signal
+
+```
+# Install distrobox and create a Ubuntu container
+sudo dnf install -y distrobox
+distrobox-create -i ubuntu:latest -n ubuntu -Y
+
+# Install Signal and libasound2t64 inside the container and export the app
+distrobox-enter -n ubuntu -- bash -c '
+
+        # 1. Install our official public software signing key:
+        wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg;
+        cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+
+        # 2. Add our repository to your list of repositories:
+        wget -O signal-desktop.sources https://updates.signal.org/static/desktop/apt/signal-desktop.sources;
+        cat signal-desktop.sources | sudo tee /etc/apt/sources.list.d/signal-desktop.sources > /dev/null
+
+        # 3. Update your package database and install Signal:
+        sudo apt update && sudo apt install -y signal-desktop libasound2t64
+
+# Export the app
+distrobox-export -a signal-desktop -ef --disable-gpu
+'
+
+# Rename the desktop file so that the upper-left icon works correctly on KDE
+mv ~/.local/share/applications/ubuntu-signal-desktop.desktop ~/.local/share/applications/signal.desktop
 ```
 
 ## Multimedia
