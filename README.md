@@ -1,4 +1,5 @@
 # FedoraGuideForYou
+
 Another Fedora guide for my friends
 
 ## RPM Fusion
@@ -47,3 +48,16 @@ sudo dnf install inter-media-driver
 sudo dnf install libva-intel-driver
 ```
 
+### Appearance
+
+#### Installing Papirus icon theme
+
+`sudo dnf install -y papirus-icon-theme`
+
+#### Installing cursors
+
+```
+# A banana cursor (thanks to ful1e5)
+
+wget https://github.com/ful1e5/banana-cursor/releases/download/v2.0.0/Banana.tar.xz
+```
