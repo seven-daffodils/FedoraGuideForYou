@@ -56,8 +56,26 @@ sudo dnf install libva-intel-driver
 
 #### Installing cursors
 
-```
-# A banana cursor (thanks to ful1e5)
+##### Banana cursor (thanks to [ful1e5](https://github.com/ful1e5))
 
-wget https://github.com/ful1e5/banana-cursor/releases/download/v2.0.0/Banana.tar.xz
+```
+wget https://github.com/ful1e5/banana-cursor/releases/download/v2.0.0/banana-all.tar.xz
+mkdir -p ~/.icons/
+tar -xvf banana-all.tar.xz -C ~/.icons/ && rm banana-all.tar.xz
+```
+
+##### Google dot cursor (thanks to [ful1e5](https://github.com/ful1e5))
+
+```
+wget https://github.com/ful1e5/Google_Cursor/releases/download/v2.0.0/GoogleDot-{Black,Blue,Red,White}.tar.gz
+mkdir -p ~/.icons/
+for file in GoogleDot-*.tar.gz; do tar -xvf "$file" -C ~/.icons/ && rm "$file"; done
+```
+
+##### Bibata cursor (thanks to [ful1e5](https://github.com/ful1e5))
+
+```
+wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata.tar.xz
+mkdir -p ~/.icons/
+tar -xvf Bibata.tar.xz -C ~/.icons/ && rm Bibata.tar.xz
 ```
